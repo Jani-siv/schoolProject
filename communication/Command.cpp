@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <iostream>
 #include "Uart.hpp"
+#include "AirQualityInterface.hpp"
 
 namespace communication {
 //commands send recv uart msg
@@ -10,6 +11,7 @@ std::string Command::Execute(std::string type)
 {
     static Uart gpsUart;
     static Uart debugUart;
+    static AirQualityInteface airQuality;
     std::string err = "Communication not found";
 
     if (type.find("gpsRecv") == 0) {
@@ -34,6 +36,10 @@ std::string Command::Execute(std::string type)
     else if (type.find("debugFileMock") == 0)
     {
         DebugFileMock();
+    }
+    else if (type.find("recvAirFileMock") == 0)
+    {
+        return airQuality.Execute("recvAirFileMock");
     }
     else {
         return err;

@@ -10,7 +10,8 @@ For debug functionality need set also uart communication and send data out of sy
 
 ### TO-DO
 
-*[ ] Sinewave generator and Air quality sensor
-*[ ] Class for combining sensors
+*[x] Air quality sensor
+* [x] Change air and gps to receive command instance
+*[x] Class for combining sensors
 *[ ] Data analysis class
-* [ ] Uart connection class 
+

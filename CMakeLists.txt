@@ -11,6 +11,7 @@ set(SOURCEFILES
         ${CMAKE_SOURCE_DIR}/communication/Command.cpp
         ${CMAKE_SOURCE_DIR}/communication/CommandBase.cpp
         ${CMAKE_SOURCE_DIR}/communication/Uart.cpp
+        ${CMAKE_SOURCE_DIR}/communication/AirQualityInterface.cpp
         ${CMAKE_SOURCE_DIR}/sensors/Aggregator.cpp
         ${CMAKE_SOURCE_DIR}/sensors/AirQuality.cpp
         ${CMAKE_SOURCE_DIR}/sensors/Gps.cpp

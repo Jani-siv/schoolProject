@@ -7,7 +7,7 @@ bool Gps::readUart()
 {
     while(AccessData) {}
     AccessData = true;
-    incomingMessage_ = command_.Execute("gpsFileMock");
+    incomingMessage_ = command_->Execute("gpsFileMock");
     AccessData = false;
     return true;
 }
@@ -40,7 +40,7 @@ void Gps::GenerateStruct()
         ::debugger->DebugMsg("Empty packet");
     }
 }
-data_msg Gps::GetMessage()
+data_msg Gps::GetGpsData()
 {
     while(AccessData) {}
     AccessData = true;
@@ -79,6 +79,10 @@ void Gps::ValidateData()
     {
         ::debugger->DebugMsg("6");
     }
+}
+Gps::Gps(communication::Command &command)
+{
+    command_ = &command;
 }
 
 }// namespace sensors

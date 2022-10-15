@@ -6,6 +6,7 @@ set(SOURCEFILES
         ${CMAKE_SOURCE_DIR}/communication/Command.cpp
         ${CMAKE_SOURCE_DIR}/communication/CommandBase.cpp
         ${CMAKE_SOURCE_DIR}/communication/Uart.cpp
+        ${CMAKE_SOURCE_DIR}/communication/AirQualityInterface.cpp
         )
 
 include(FetchContent)

@@ -41,5 +41,21 @@ TEST_F(CommandTest, SendTest)
     EXPECT_EQ(testable.Execute("gpsSend"),"message");
 }
 
+TEST_F(CommandTest, AirQuality)
+{
+    std::string test = testable.Execute("recvAirFileMock");
+    EXPECT_EQ(test, "123.123");
+    test = testable.Execute("recvAirFileMock");
+    EXPECT_EQ(test, "321.321");
+    test = testable.Execute("recvAirFileMock");
+    EXPECT_EQ(test, "231.321");
+    test = testable.Execute("recvAirFileMock");
+    EXPECT_EQ(test, "0.1235");
+    test = testable.Execute("recvAirFileMock");
+    EXPECT_EQ(test, "123456.123");
+    test = testable.Execute("recvAirFileMock");
+    EXPECT_EQ(test, "123.123");
+}
+
 }
 }

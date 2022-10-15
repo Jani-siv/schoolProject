@@ -4,13 +4,16 @@
 
 class Debug {
 public:
-    Debug()  {std::cout<<"hello debug"<<std::endl;}
+    Debug(communication::Command& command)
+    {
+        command_ = &command;
+    }
     ~Debug() = default;
     void DebugMsg(std::string msg)
     {
-        command_.setUartMessage("debugSend",msg);
-        command_.Execute("debugFileMock");
+        command_->setUartMessage("debugSend",msg);
+        command_->Execute("debugFileMock");
     }
 private:
-    communication::Command command_;
+    communication::Command* command_;
 };

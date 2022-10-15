@@ -12,7 +12,9 @@ class AirQualityTest : public testing::Test
 
 TEST_F(AirQualityTest, testSuiteTest)
 {
-    EXPECT_TRUE(true);
+    communication::Command command;
+    AirQuality airQuality(command);
+    EXPECT_EQ(airQuality.GetAirQuality(),"123.123");
 }
 
 }// namespace tests

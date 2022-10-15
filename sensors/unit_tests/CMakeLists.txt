@@ -1,10 +1,16 @@
 set(TESTNAME sensorTests)
 SET(BASEPATH "${CMAKE_SOURCE_DIR}")
 INCLUDE_DIRECTORIES("${BASEPATH}")
+
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+find_package(Threads REQUIRED)
+
 set(SOURCEFILES
         ${CMAKE_SOURCE_DIR}/sensors/unit_tests/AggregatorTests.cpp
         ${CMAKE_SOURCE_DIR}/sensors/unit_tests/AirQualityTests.cpp
         ${CMAKE_SOURCE_DIR}/sensors/unit_tests/GpsTests.cpp
+        ${CMAKE_SOURCE_DIR}/communication/AirQualityInterface.cpp
         ${CMAKE_SOURCE_DIR}/sensors/Aggregator.cpp
         ${CMAKE_SOURCE_DIR}/sensors/AirQuality.cpp
         ${CMAKE_SOURCE_DIR}/sensors/Gps.cpp
@@ -33,6 +39,7 @@ add_executable(
 target_link_libraries(
         ${TESTNAME}
         GTest::gtest_main
+        Threads::Threads
 )
 
 include(GoogleTest)

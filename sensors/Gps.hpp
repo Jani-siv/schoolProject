@@ -10,10 +10,10 @@ namespace sensors {
 
 class Gps {
 public:
-    Gps() = default;
+    Gps(communication::Command& command);
     ~Gps() = default;
     bool readUart();
-    data_msg GetMessage();
+    data_msg GetGpsData();
 private:
     bool AccessData = false;
     void parseMessage();
@@ -21,8 +21,8 @@ private:
     void ValidateData();
     std::vector<std::string> data_;
     std::string incomingMessage_;
-    communication::Command command_;
     data_msg structure_;
+    communication::Command* command_;
 };
 
 }// namespace sensors

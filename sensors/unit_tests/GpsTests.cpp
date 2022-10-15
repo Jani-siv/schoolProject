@@ -4,38 +4,36 @@
 #include <fstream>
 #include "sensors/dataStructure.hpp"
 #include "debug/Debug.hpp"
-
-std::shared_ptr<Debug> debugger = std::make_shared<Debug>();
+static communication::Command command;
+std::shared_ptr<Debug> debugger = std::make_shared<Debug>(command);
 
 namespace sensors {
 namespace tests {
-
-
 
 class Gpstest : public testing::Test
 {
 public:
     void SetUp() override {}
     void TearDown() override {}
+    communication::Command command;
 };
 
 TEST_F(Gpstest, correctData)
 {
-    Gps testable;
+    Gps testable(command);
     EXPECT_TRUE(testable.readUart());
-    data_msg testableStruct = testable.GetMessage();
-    EXPECT_EQ(testableStruct.longitude,31.2941);
-    EXPECT_EQ(testableStruct.latitude,40.3244);
+    data_msg testableStruct = testable.GetGpsData();
+    EXPECT_EQ(testableStruct.longitude,1231.2941);
+    EXPECT_EQ(testableStruct.latitude,5540.3244);
     EXPECT_EQ(testableStruct.timestamp,134732.000);
 }
 
 TEST_F(Gpstest, WrongData)
 {
-    Gps testable;
+    Gps testable(command);
     testable.readUart();
-    data_msg dummy = testable.GetMessage();
     testable.readUart();
-    data_msg testableStruct = testable.GetMessage();
+    data_msg testableStruct = testable.GetGpsData();
     EXPECT_EQ(testableStruct.longitude,21231.2941);
     EXPECT_EQ(testableStruct.latitude,19940.3244);
     EXPECT_EQ(testableStruct.timestamp,0);
