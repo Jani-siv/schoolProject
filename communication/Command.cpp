@@ -41,9 +41,7 @@ std::string Command::Execute(std::string type)
     {
         return airQuality.Execute("recvAirFileMock");
     }
-    else {
-        return err;
-    }
+    return err;
 }
 
 std::string Command::GpsFileMock() {

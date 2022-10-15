@@ -10,7 +10,8 @@ namespace sensors {
 
 class Gps {
 public:
-    Gps(communication::Command& command);
+    Gps(std::shared_ptr<communication::Command>& command,
+        std::shared_ptr<Debug>& debugger);
     ~Gps() = default;
     bool readUart();
     data_msg GetGpsData();
@@ -22,9 +23,9 @@ private:
     std::vector<std::string> data_;
     std::string incomingMessage_;
     data_msg structure_;
-    communication::Command* command_;
+    std::shared_ptr<communication::Command> command_;
+    std::shared_ptr<Debug> debug_;
 };
 
 }// namespace sensors
 
-extern std::shared_ptr<Debug> debugger;

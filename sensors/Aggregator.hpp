@@ -8,10 +8,6 @@
 
 namespace sensors {
 
-extern communication::Command command;
-static sensors::Gps gpsSensor(command);
-static sensors::AirQuality airQuality(command);
-
 class Aggregator {
 public:
     Aggregator();

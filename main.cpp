@@ -1,6 +1,7 @@
 #include <iostream>
 #include "DataAnalysis.hpp"
 int main() {
-    DataAnalysis runProgram;
+    analysis::DataAnalysis runProgram;
+    runProgram.StartAnalysis(10);
     return 0;
 }

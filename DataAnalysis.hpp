@@ -4,8 +4,10 @@
 #include "sensors/Aggregator.hpp"
 #include "sensors/dataStructure.hpp"
 
-class DataAnalysis {
+namespace analysis {
 
+class DataAnalysis
+{
 public:
     DataAnalysis() = default;
     ~DataAnalysis() = default;
@@ -15,3 +17,5 @@ private:
     std::vector<sensors::data_msg> data_;
     std::vector<double> analyse();
 };
+
+} // namespace analysis

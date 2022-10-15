@@ -2,9 +2,9 @@
 
 namespace sensors {
 
-AirQuality::AirQuality(communication::Command &command)
+AirQuality::AirQuality(std::shared_ptr<communication::Command> &command)
 {
-    command_ = &command;
+    command_ = command;
 }
 
 std::string AirQuality::GetAirQuality()

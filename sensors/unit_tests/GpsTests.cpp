@@ -8,20 +8,18 @@
 namespace sensors {
 namespace tests {
 
-communication::Command command;
-std::shared_ptr<Debug> debugger = std::make_shared<Debug>(command);
-
 class Gpstest : public testing::Test
 {
 public:
     void SetUp() override {}
     void TearDown() override {}
-    communication::Command command;
+    std::shared_ptr<communication::Command> command = std::make_shared<communication::Command>();
+    std::shared_ptr<Debug> debugger = std::make_shared<Debug>(command);
 };
 
 TEST_F(Gpstest, correctData)
 {
-    Gps testable(command);
+    Gps testable(command,debugger);
     EXPECT_TRUE(testable.readUart());
     data_msg testableStruct = testable.GetGpsData();
     EXPECT_EQ(testableStruct.longitude,1231.2941);
@@ -31,7 +29,7 @@ TEST_F(Gpstest, correctData)
 
 TEST_F(Gpstest, WrongData)
 {
-    Gps testable(command);
+    Gps testable(command,debugger);
     testable.readUart();
     testable.readUart();
     data_msg testableStruct = testable.GetGpsData();

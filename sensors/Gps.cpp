@@ -37,7 +37,7 @@ void Gps::GenerateStruct()
     }
     else
     {
-        ::debugger->DebugMsg("Empty packet");
+        debug_->DebugMsg("Empty packet");
     }
 }
 data_msg Gps::GetGpsData()
@@ -53,36 +53,38 @@ void Gps::ValidateData()
 {
     if(data_.at(0).find("$GPGGA",0) != 0)
     {
-        ::debugger->DebugMsg("1");
+        debug_->DebugMsg("1");
     }
     double testable = std::stod(data_.at(1));
     if(testable == 0)
     {
-        ::debugger->DebugMsg("2");
+        debug_->DebugMsg("2");
     }
     testable = std::stod(data_.at(2));
     testable /= 100;
     if (testable > 90)
     {
-        ::debugger->DebugMsg("3");
+        debug_->DebugMsg("3");
     }
     if(data_.at(3).find("N",0) != 0)
     {
-        ::debugger->DebugMsg("4");
+        debug_->DebugMsg("4");
     }
     testable = std::stod(data_.at(4))/100;
     if (testable > 180)
     {
-        ::debugger->DebugMsg("5");
+        debug_->DebugMsg("5");
     }
     if(data_.at(5).find("E",0) != 0)
     {
-        ::debugger->DebugMsg("6");
+        debug_->DebugMsg("6");
     }
 }
-Gps::Gps(communication::Command &command)
+Gps::Gps(std::shared_ptr<communication::Command>& command,
+         std::shared_ptr<Debug>& debugger)
 {
-    command_ = &command;
+    debug_ = debugger;
+    command_ =  command;
 }
 
 }// namespace sensors

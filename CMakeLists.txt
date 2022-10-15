@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.22)
 project(schoolProject)
 
 set(BASEPATH "${CMAKE_SOURCE_DIR}")
-
+INCLUDE_DIRECTORIES("${BASEPATH}")
 set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCEFILES

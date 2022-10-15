@@ -4,9 +4,9 @@
 
 class Debug {
 public:
-    Debug(communication::Command& command)
+    Debug(std::shared_ptr<communication::Command>& command)
     {
-        command_ = &command;
+        command_ = command;
     }
     ~Debug()
     {
@@ -18,5 +18,5 @@ public:
         command_->Execute("debugFileMock");
     }
 private:
-    communication::Command* command_;
+    std::shared_ptr<communication::Command> command_;
 };
