@@ -11,11 +11,15 @@ namespace sensors {
 class Aggregator {
 public:
     Aggregator();
-    ~Aggregator() = default;
+    ~Aggregator();
     data_msg GetDataFromSensors();
-    static void StartSensorsCommunication() ;
     void StopReading();
 private:
+    void StartSensorsCommunication() ;
+    std::shared_ptr<communication::Command> command_;
+    std::shared_ptr<Debug> debugger_;
+    std::shared_ptr<sensors::Gps> gpsSensor_;
+    std::shared_ptr<sensors::AirQuality> airQuality_;
     bool running = true;
 };
 

@@ -12,6 +12,7 @@ std::string AirQuality::GetAirQuality()
     while (AccessData) {}
     AccessData = true;
     std::string data = incomingMessage;
+    incomingMessage="";
     AccessData = false;
     return data;
 }

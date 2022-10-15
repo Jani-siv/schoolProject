@@ -7,7 +7,9 @@ namespace test {
 class DataAnalysisTest : public testing::Test
 {
     void SetUp() override
-    {}
+    {
+
+    }
     void TearDown() override
     {}
 };

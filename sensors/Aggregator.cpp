@@ -3,36 +3,38 @@
 
 namespace sensors {
 
-std::shared_ptr<communication::Command> g_command = std::make_shared<communication::Command>();
-std::shared_ptr<Debug> g_debugger = std::make_shared<Debug>(g_command);
-std::shared_ptr<sensors::Gps> gpsSensor = std::make_shared<sensors::Gps>(g_command,g_debugger);
-std::shared_ptr<sensors::AirQuality> airQuality = std::make_shared<sensors::AirQuality>(g_command);
-
 data_msg Aggregator::GetDataFromSensors()
 {
     std::string air;
-    while (air.length() == 0) {
-        airQuality->ReadAirQuality();
-        air = airQuality->GetAirQuality();
-    }
-    gpsSensor->readUart();
-    data_msg data = gpsSensor->GetGpsData();
+    StartSensorsCommunication();
+    air = airQuality_->GetAirQuality();
+    data_msg data = gpsSensor_->GetGpsData();
     data.sensorValue = std::stod(air);
     return data;
 }
 
 void Aggregator::StartSensorsCommunication()
 {
-    gpsSensor->readUart();
-    airQuality->ReadAirQuality();
+    gpsSensor_->readUart();
+    airQuality_->ReadAirQuality();
 }
 
 void Aggregator::StopReading()
 {
     running = false;
 }
+Aggregator::~Aggregator()
+{
+    command_.reset();
+    debugger_.reset();
+    gpsSensor_.reset();
+    airQuality_.reset();
+}
 Aggregator::Aggregator()
 {
-
+    command_ = std::make_shared<communication::Command>();
+    debugger_ = std::make_shared<Debug>(command_);
+    gpsSensor_ = std::make_shared<sensors::Gps>(command_,debugger_);
+    airQuality_ = std::make_shared<sensors::AirQuality>(command_);
 }
 }// namespace sensors
