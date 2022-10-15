@@ -1,8 +1,13 @@
 #include "sensors/Aggregator.hpp"
 #include <gtest/gtest.h>
 #include <thread>
+#include "debug/Debug.hpp"
+#include <memory>
+#include "communication/Command.hpp"
 
 namespace sensors {
+communication::Command command;
+std::shared_ptr<Debug> debugger = std::make_shared<Debug>(command);
 namespace tests {
 
 class AggregatorTest : public testing::Test

@@ -8,7 +8,7 @@
 
 namespace sensors {
 
-static communication::Command command;
+extern communication::Command command;
 static sensors::Gps gpsSensor(command);
 static sensors::AirQuality airQuality(command);
 

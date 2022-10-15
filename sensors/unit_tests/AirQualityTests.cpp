@@ -14,6 +14,7 @@ TEST_F(AirQualityTest, testSuiteTest)
 {
     communication::Command command;
     AirQuality airQuality(command);
+    airQuality.ReadAirQuality();
     EXPECT_EQ(airQuality.GetAirQuality(),"123.123");
 }
 

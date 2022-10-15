@@ -8,7 +8,10 @@ public:
     {
         command_ = &command;
     }
-    ~Debug() = default;
+    ~Debug()
+    {
+        remove("/tmp/unit_test");
+    }
     void DebugMsg(std::string msg)
     {
         command_->setUartMessage("debugSend",msg);

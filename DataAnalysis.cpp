@@ -1,5 +1,10 @@
 #include <limits>
+#include <memory>
 #include "DataAnalysis.hpp"
+#include "debug/Debug.hpp"
+#include "communication/Command.hpp"
+static communication::Command command;
+std::shared_ptr<Debug> debugger = std::make_shared<Debug>(command);
 
 std::vector<double> DataAnalysis::StartAnalysis(size_t samples)
 {

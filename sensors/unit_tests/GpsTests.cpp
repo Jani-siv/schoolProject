@@ -4,11 +4,12 @@
 #include <fstream>
 #include "sensors/dataStructure.hpp"
 #include "debug/Debug.hpp"
-static communication::Command command;
-std::shared_ptr<Debug> debugger = std::make_shared<Debug>(command);
 
 namespace sensors {
 namespace tests {
+
+communication::Command command;
+std::shared_ptr<Debug> debugger = std::make_shared<Debug>(command);
 
 class Gpstest : public testing::Test
 {
