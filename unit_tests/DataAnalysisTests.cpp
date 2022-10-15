@@ -9,5 +9,9 @@ class DataAnalysisTest : public testing::Test
 
 TEST_F(DataAnalysisTest, testSuiteTest)
 {
-    EXPECT_TRUE(true);
+    DataAnalysis testable;
+    std::vector<double> data = testable.StartAnalysis(5);
+    EXPECT_TRUE(data.at(0) == 123456.123);
+    EXPECT_TRUE(data.at(1) == 0.1235);
+    EXPECT_TRUE(data.at(2) == 24826.4023);
 }
