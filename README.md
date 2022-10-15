@@ -10,8 +10,8 @@ For debug functionality need set also uart communication and send data out of sy
 
 ### TO-DO
 
-*[x] Air quality sensor
-* [x] Change air and gps to receive command instance
-*[x] Class for combining sensors
-*[ ] Data analysis class
+-[ ] Move program to hardware
+- [ ] Robot uart testing
+- [ ] Robot debug testing
+
 
