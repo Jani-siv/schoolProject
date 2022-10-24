@@ -46,9 +46,9 @@ std::string Command::Execute(std::string type)
 
 std::string Command::GpsFileMock() {
     std::string path = std::filesystem::current_path();
-    std::string projectName = "schoolProject";
+    std::string projectName = "communication";
     path = path.substr(0,path.find(projectName)+projectName.length());
-    path += "/communication/mock/gpsCoordinates.txt";
+    path += "communication/mock/gpsCoordinates.txt";
     if (unitTesting.empty()) {
         std::fstream fd(path.c_str(), std::ios_base::in);
         if (fd.is_open()) {
@@ -90,9 +90,9 @@ std::string Command::AirFileMock()
 {
     std::string data;
         if (dataPoints_.empty()) {
-            std::string projectName = "schoolProject";
+            std::string projectName = "communication";
             std::string path = std::filesystem::current_path();
-            path = path.substr(0,path.find(projectName)+projectName.length());
+            path = path.substr(0,path.find(projectName));
             path += "/communication/mock/airData.txt";
             std::ifstream fd(path, std::ios_base::in);
             std::string line;
