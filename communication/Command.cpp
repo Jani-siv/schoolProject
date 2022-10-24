@@ -48,7 +48,7 @@ std::string Command::GpsFileMock() {
     std::string path = std::filesystem::current_path();
     std::string projectName = "communication";
     path = path.substr(0,path.find(projectName)+projectName.length());
-    path += "communication/mock/gpsCoordinates.txt";
+    path += "/communication/mock/gpsCoordinates.txt";
     if (unitTesting.empty()) {
         std::fstream fd(path.c_str(), std::ios_base::in);
         if (fd.is_open()) {
