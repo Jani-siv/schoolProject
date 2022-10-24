@@ -21,6 +21,7 @@ set(SOURCEFILES
 add_executable(${PROJECT_NAME} ${SOURCEFILES})
 
 if(DEFINED UT_TEST)
+    enable_testing()
     add_subdirectory(${CMAKE_SOURCE_DIR}/sensors/unit_tests)
     add_subdirectory(${CMAKE_SOURCE_DIR}/unit_tests)
     add_subdirectory(${CMAKE_SOURCE_DIR}/communication/unit_tests)
