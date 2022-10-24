@@ -17,3 +17,4 @@ For debug functionality need set also uart communication and send data out of sy
 * run all tests `./communication/unit_tests/CommandTests && ./unit_tests/DataAnalysisTests && ./sensors/unit_tests/sensorTests`
 ![alt](unitTest.png)
 
+* Project added to run in jenkins
