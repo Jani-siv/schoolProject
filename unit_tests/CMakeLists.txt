@@ -24,9 +24,9 @@ FetchContent_Declare(
         GIT_TAG release-1.12.1
 )
 
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
-enable_testing()
+add_library(GTest::GTest INTERFACE IMPORTED)
+target_link_libraries(GTest::GTest INTERFACE gtest_main)
 
 add_executable(
         ${TESTNAME}
@@ -35,10 +35,7 @@ add_executable(
 
 target_link_libraries(
         ${TESTNAME}
-        GTest::gtest_main
+        GTest::GTest
 )
 
-include(GoogleTest)
-gtest_discover_tests(
-        ${TESTNAME}
-)
+add_test(DataAnalysisGTests ${TESTNAME})
